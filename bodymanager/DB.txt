@@ -1,0 +1,103 @@
+D.B 계정
+
+계정명 : kosmop
+비먼번호 : 1234
+
+
+CREATE USER kosmop IDENTIFIED BY 1234;
+
+GRANT CONNECT, RESOURCE, DBA TO kosmop;
+
+create table Users(
+id varchar2(20) primary key,
+pw varchar2(20),
+name varchar2(20),
+userzipcode varchar2(20),
+address varchar2(100),
+sex varchar2(20),
+ph varchar2(50),
+birth varchar2(10),
+email varchar2(30),
+p_num number references program(p_num)
+);
+
+create table program(
+p_num   number primary key,
+p_teacher varchar2(30),
+p_time     varchar2(30),
+p_content varchar2(300),
+p_name      varchar2(30),
+p_postion varchar2(50)
+);
+
+create table zipcode(
+zipcode varchar2(10),
+area1 varchar2(100),
+area2 varchar2(100),
+area3 varchar2(100),
+area4 varchar2(200)
+);
+
+create table item(
+i_name varchar2(50),
+i_num number primary key,
+i_price number,
+i_content varchar2(500),
+i_time Date,
+i_count number,
+i_imagePath varchar(400),
+i_imageOrgname varchar(200)
+);
+
+///
+create sequence notice_seq 
+increment by 1
+start with 0;
+
+create table notice(
+n_num number primary key,
+n_name varchar2(100),
+n_content varchar2(1000),
+n_date Date
+);
+//
+
+//
+create sequence board_seq 
+increment by 1
+start with 0;
+
+create table board(
+b_num number primary key,
+b_name varchar2(100),
+b_content varchar2(1000),
+b_id varchar2(20),
+b_count number,
+b_date Date
+);
+//
+
+create sequence comment_seq 
+increment by 1
+start with 0;
+
+create table commentt(
+c_num number primary key,
+c_id varchar2(20),
+c_content varchar2(300),
+c_date Date,
+c_bnum number
+);
+
+create sequence program_seq 
+increment by 1
+start with 0;
+
+create table programt(
+p_name varchar2(100),
+p_teacher varchar2(20),
+p_time varchar2(40),
+p_content varchar2(1000),
+p_num number primary key,
+p_position varchar2(100)
+);
