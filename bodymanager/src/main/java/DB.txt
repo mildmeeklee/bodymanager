@@ -91,7 +91,7 @@ c_bnum number
 
 create sequence program_seq 
 increment by 1
-start with 0;
+start with 1;
 
 create table programt(
 p_name varchar2(100),
