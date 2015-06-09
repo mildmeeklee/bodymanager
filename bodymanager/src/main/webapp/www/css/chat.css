@@ -1,0 +1,86 @@
+@CHARSET "utf-8";
+
+.send_msg{	
+	width:280px;
+	height:30px;
+	background-color: #eb583c;
+	color: #ffffff;	
+	text-align: center;
+	vertical-align:middle;
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+	cursor: pointer;
+}
+
+.join_chat{
+	display:none;
+	width:280px;
+	height: 200px;
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+	background: #FFF;
+  border-width: 0 1px;
+  border-style: solid;
+  border-color: #DDD;
+    
+}
+.join_header{
+	background-color: #eb583c;
+	color: #ffffff;	
+	height:20px;
+	text-align: center;
+}
+.join_body{
+	height:140px;
+	color: #666;	
+	display:table-cell;
+    vertical-align:middle;
+}
+.join_footer{
+	
+	height:40px;
+	
+}
+.join_btn{
+	width:90%;
+	height:20px;
+	background-color: #eb583c;
+	color: #ffffff;	
+	text-align: center;	
+	margin: auto;
+	
+}
+
+#chat_contentWrap{
+	display:none;
+	width:280px;
+	height: auto;
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+	background: #FFF;
+  border-width: 0 1px;
+  border-style: solid;
+  border-color: #DDD;
+}
+
+
+
+/**
+chat admin
+*/
+
+#chatadmin_wrap{
+	width:80%;
+	margin: auto;
+}
+
+ul.pages  {
+  list-style: none;
+}
+
+li.log{
+ list-style: none;	
+}
