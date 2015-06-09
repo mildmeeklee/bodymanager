@@ -24,7 +24,8 @@
 		}); */
 		
 		var $addchat = $('#addchat');
-		
+		var $msg = $(".inputMessage");
+		var $chat = $("#addchat");
 		$('#admin_btn').on('click', function() {
 			//var message = $('.join_name').val();
 			
@@ -33,6 +34,17 @@
 			console.log("$join_name :: "+ $join_name.val());
 			socket.emit('admin', 'admin', function(data){
 				
+			} );
+			//$join_name.val('');
+		});
+		$('#send_msg').on('click', function() {
+			//var message = $('.join_name').val();
+			
+			/* console.log("send message :: " + message);
+			socket.emit('send message', message); */
+			console.log("$msg :: "+ $msg.val());
+			socket.emit('admin', $msg.val(), function(data){
+				$chat.append('<b>' + data.nick + ': </b>' + data.msg + "<br/>");
 			} );
 			//$join_name.val('');
 		});
@@ -78,6 +90,7 @@
         <div id="addchat"></div>
       </div>
       <input class="inputMessage" placeholder="Type here...">
+      <button id="send_msg">send</button>
     </li>
     
   </ul>
