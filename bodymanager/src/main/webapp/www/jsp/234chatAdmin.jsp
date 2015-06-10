@@ -16,13 +16,21 @@
 	
 	$(document).ready(function() {
 
-		
+		/* $('#chat_form').on('click', function(e){
+			
+		var message = $('#chat_input').val();
+		console.log("message :: "+message);
+		socket.emit('messages', message);
+		}); */
 		
 		var $users = $('#users');
 		var $msg = $(".inputMessage");
 		var $chat = $("#addchat");
 		$('#admin_btn').on('click', function() {
+			//var message = $('.join_name').val();
 			
+			/* console.log("send message :: " + message);
+			socket.emit('send message', message); */
 		
 			socket.emit('admin', 'admin', function(data){				
 			} );
@@ -33,25 +41,31 @@
 			
 			/* console.log("send message :: " + message);
 			socket.emit('send message', message); */
-			console.log("#send_msg on click !!!   $msg :: "+ $msg.val());
+			console.log("$msg :: "+ $msg.val());
 			var user = $('#select_user').find(":selected").text();
 			console.log('user :: '+user);
-			socket.emit('admin send msg', {'msg': $msg.val(), 'user' : user }, function(data){
-				//$chat.append('<b>' +  '관리자 : </b>' + data.msg + "<br/>");
-				$msg.val();
-			} ); 		
+			/* socket.emit('admin', {'msg': $msg.val(), 'user' : user }, function(data){
+				$chat.append('<b>' +  '관리자 : </b>' + data.msg + "<br/>");
+			} ); */
 			
+			socket.emit('send message', $msg.val(), function(data){
+				$chat.append('<b>' +  '관리자 : </b>' + data.msg + "<br/>");
+			} );
+			/* socket.emit(user, $msg.val(), function(data){
+				$chat.append('<b>' +  '관리자 : </b>' + data.msg + "<br/>");
+			} ); */
+			//$join_name.val('');
 		});
 		
 		
-		 socket.on('admin', function(data){
+		socket.on('admin', function(data){
 			var html = '';
 			for(i=0; i < data.length; i++){
 				html += data[i] + '님이 입장하셨습니다. <br/>';
 				$("#select_user").append('<option value="'+data[i]+'">'+data[i]+'</option>');
 			}
 			$users.append(html);
-		}); 
+		});
 		
 		/* $messageForm.submit(function(e){
 			e.preventDefault();
@@ -64,19 +78,12 @@
 		}); */
 		
 		socket.on('new message', function(data){
-			console.log('new message fire');
-			if(data.admin==true){
-				$chat.append('<b>' +  '관리자 : </b>' + data.msg + "<br/>");
-			}else{
-				$chat.append('<b>' + data.nick + ': </b>' + data.msg + "<br/>");
-			}
-		}); 
-		/* socket.on('admin new message', function(data){
-			console.log('admin fire');
-			$chat.append('<b>' + 'admin : </b>' + data.msg + "<br/>");
-		}); */
+			$chat.append('<b>' + data.nick + ': </b>' + data.msg + "<br/>");
+		});
 		
-		
+		socket.on('whisper', function(data){
+			$chat.append('<span class="whisper"><b>' + data.nick + ': </b>' + data.msg + "</span><br/>");
+		});
 	});
 </script>
 <title></title>
