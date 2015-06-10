@@ -21,6 +21,20 @@ email varchar2(30),
 p_num number references program(p_num)
 );
 
+
+create table Users(
+id varchar2(20) primary key,
+pw varchar2(20),
+name varchar2(20),
+userzipcode varchar2(20),
+address varchar2(100),
+sex varchar2(20),
+ph varchar2(50),
+birth varchar2(10),
+email varchar2(30),
+p_num number 
+);
+
 create table program(
 p_num   number primary key,
 p_teacher varchar2(30),
@@ -52,7 +66,7 @@ i_imageOrgname varchar(200)
 ///
 create sequence notice_seq 
 increment by 1
-start with 0;
+start with 1;
 
 create table notice(
 n_num number primary key,
@@ -65,7 +79,7 @@ n_date Date
 //
 create sequence board_seq 
 increment by 1
-start with 0;
+start with 1;
 
 create table board(
 b_num number primary key,
@@ -79,7 +93,7 @@ b_date Date
 
 create sequence comment_seq 
 increment by 1
-start with 0;
+start with 1;
 
 create table commentt(
 c_num number primary key,

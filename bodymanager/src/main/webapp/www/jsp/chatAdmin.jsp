@@ -24,7 +24,7 @@
 		$('#admin_btn').on('click', function() {
 			
 		
-			socket.emit('admin', 'admin', function(data){				
+			socket.emit('start manage', 'admin', function(data){				
 			} );
 			//$join_name.val('');
 		});
@@ -45,11 +45,14 @@
 		
 		
 		 socket.on('admin', function(data){
+			 console.log(data);
 			var html = '';
-			for(i=0; i < data.length; i++){
+			html += data + '님이 입장하셨습니다. <br/>';
+			$("#select_user").append('<option value="'+data+'">'+data+'</option>');
+			/* for(i=0; i < data.length; i++){
 				html += data[i] + '님이 입장하셨습니다. <br/>';
 				$("#select_user").append('<option value="'+data[i]+'">'+data[i]+'</option>');
-			}
+			} */
 			$users.append(html);
 		}); 
 		

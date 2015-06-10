@@ -12,9 +12,7 @@
 	 alert(data.hello);
 	 });*/
 	var socket = io.connect('http://localhost:9995');
-	socket.on('messages', function(data) {
-		alert(data.hello);
-	});
+	
 	$(document).ready(function() {
 
 		/* $('#chat_form').on('click', function(e){
@@ -34,7 +32,12 @@
 		var nickName;
 		// 채팅 시작
 		$('.join_btn').on('click', function() {
-			
+			//var socket = io.connect('http://localhost:9995');
+			socket.io.reconnecting = undefined; //<- false should be the initial value
+			socket.io._reconnection = true;
+			socket.connect();
+			console.log('socket !!');
+			console.log(socket);
 			console.log("$join_name :: "+ $join_name.val());
 			nickName =  $join_name.val();
 			socket.emit('new user', $join_name.val(), function(data){
@@ -57,6 +60,13 @@
 			$('.join_chat').hide();
 			$('#chat_contentWrap').hide();
 			$('#leave_msg').show();
+			//socket.disconnect();
+			socket.emit('user delete', nickName, function(data){
+				console.log('삭제되었습니다.')
+			});
+			socket.disconnect();
+			$join_name.val('');
+			//socket.close();
 			/* socket.emit('disconnect', nickName, function(data){
 				console.log('callback!! ');
 				if(data){
@@ -71,9 +81,10 @@
 		socket.on('usernames', function(data){
 			
 			var html = '';
-			for(i=0; i < data.length; i++){
+			html += data +'<br>';
+			/* for(i=0; i < data.length; i++){
 				html += data[i] + '<br/>'
-			}
+			} */
 			$users.html(html);
 		});
 		
@@ -123,7 +134,7 @@
 	</div>
 
 	 <div id="chat_contentWrap">
-	 <div class="join_header">live chat<input type="button" value="닫기"  id="exit_chat" class="chat_exitBtn"></div>
+	 <div class="join_header">live chat<input type="button" value="종료"  id="exit_chat" class="chat_exitBtn"></div>
 		<div id="chatWrap">
 			<div id="chat"></div>
 			<form id="send-message">
