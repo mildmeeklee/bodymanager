@@ -3,6 +3,7 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="www/css/chat.css">
+<link rel="stylesheet" type="text/css" href="www/css/ajax.css">
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="www/js/chat.js"></script>
 <script src="http://localhost:9995/socket.io/socket.io.js"></script>
@@ -120,7 +121,7 @@
 </head>
 <body>
 	<h2>Hello World!</h2>
-
+	<div class="ajax_test" id="gotimetable">ajax test</div>
 	<div class="send_msg" id="leave_msg">leave us a message</div>
 	<div class="join_chat">
 		<div class="join_header">이름을 입력하세요.</div>
@@ -144,5 +145,7 @@
 		</div>
 		<div id="users"></div>
 	</div> 
+
+	<script src="www/js/ajaxtest.js"></script>
 </body>
 </html>

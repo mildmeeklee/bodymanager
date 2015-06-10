@@ -23,10 +23,7 @@
 	<property name="mapperLocations" value="classpath:sql/*.xml"/>
 	</bean>
 	
-	<bean id="logUserDAO" class="mybatis.LogUserDAO" p:sqlSessionFactory-ref="sqlSessionFactory" />
-	<bean id="zipDAO" class="mybatis.ZipDAO" p:sqlSessionFactory-ref="sqlSessionFactory" />
-	<bean id="itemDAO" class="mybatis.ItemDAO" p:sqlSessionFactory-ref="sqlSessionFactory"/>
-	<bean id="noticeDAO" class="mybatis.NoticeDAO" p:sqlSessionFactory-ref="sqlSessionFactory"/>
-	<bean id="boardDAO" class="mybatis.BoardDAO" p:sqlSessionFactory-ref="sqlSessionFactory"/>
+	<bean id="timetableDao" class="com.dao.TimetableDao" p:sqlSessionFactory-ref="sqlSessionFactory" />
+	
 
 </beans>
