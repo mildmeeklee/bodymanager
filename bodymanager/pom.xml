@@ -97,28 +97,10 @@
 			<version>2.4.2</version>
 		</dependency>
 		<!-- 메소드의 return형 앞에 @ResponseBody를 붙여서 사용하게되면 해당객체가 자동으로 Json객체로 변환되어 반환됩니다 -->
-		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.9.13</version>
-		</dependency>
-		
-		<!-- <dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-oxm</artifactId>
-			<version>4.1.6.RELEASE</version>
-		</dependency>
+	
 
-		<dependency>
-			<groupId>javax.xml.bind</groupId>
-			<artifactId>jaxb-api</artifactId>
-			<version>2.2.12</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.5.3</version>
-		</dependency> -->
+		
+		
 	</dependencies>
 	<build>
 		<finalName>bodymanager</finalName>
