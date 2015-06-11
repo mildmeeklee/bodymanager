@@ -1,0 +1,153 @@
+[pom.xml]
+
+<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-core-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.13</version>
+		</dependency>
+
+
+
+
+[dispathcer_servlet.xml]
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	 xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+        http://www.springframework.org/schema/mvc 
+       http://www.springframework.org/schema/mvc/spring-mvc-4.1.xsd 
+       http://www.springframework.org/schema/context
+      http://www.springframework.org/schema/context/spring-context-4.1.xsd">
+
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
+
+
+<mvc:annotation-driven />
+</beans>
+
+
+
+
+-------------------------------------
+
+@Controller
+public class TimetableController
+
+
+
+
+@RequestMapping(value = "timetablelist.do", method = RequestMethod.POST, headers ="Accept:*/*")
+	public @ResponseBody List<TimetableCommand> postAjax(@RequestBody JsonData jsonData) {
+//		String userId =  request.getParameter("data");
+//		System.out.println("postAjax id :: "+userId);
+		System.out.println("hello");
+		System.out.println("post");
+		System.out.println(jsonData.getUserID());
+		List<TimetableCommand> list = timetableDao.selectTitleList("study");
+		for(TimetableCommand a :list){
+			System.out.println(a.toString());
+			
+		}
+		return list;
+
+
+
+
+
+
+____________________________________________________________________________
+
+
+
+ var jsonData = {jsonData :[{"userID" : user}]};
+	/*var jsonData = {
+		    "jsonData": {
+		        "userID": "eylee"
+		    }
+		};*/
+	/*$.post('gettitlelist.do', jsonData , function(data){
+		$('#title_feedback').html(data);
+	});*/
+
+	/*var data ={};
+    data.q = 'test';
+    data.apikey = '947f96c9d2518613faae766eed75bca030ad67d7';
+    data.result = '10';
+    data.output = 'json';
+    data.callback = "jsonp_callback";*/
+             
+//	 jsonData.callback = "jsonp_callback";
+	$.ajax({		
+		type : 'POST',
+//		Accept : "application/json",
+		contentType : "application/json",
+//		dataType : 'json',
+		 dataType: "json",
+		url : "timetablelist.do",
+		data : jsonData,
+//		crossDomain: true,		
+//		data: JSON.stringify(jsonData), // Note it is important
+		success : function(data) {
+			console.log("select_title data!!!!!");
+			console.log(data);
+			console.log("select_title data!!!!!");
+			
+			console.log('select_title in ajax call success');
+			var select_titleResult = data.result.data;
+			
+			if (select_titleResult) {
+				if (!data.result.errors) {
+					console.log("성공!!");
+				} else {
+					console.log(data.result.errors[0]);
+									}
+			} else {
+				console.log('쿼리 조회 실패 하였습니다.');
+				
+			}
+
+		},
+		error : function(data, textStatus, request) {
+			console.log('fail start...........');
+			console.log(data);
+			console.log(textStatus);
+			console.log('fail end.............');
+			alert('쿼리 조회 실패 하였습니다.');			
+		}
+
+	});
+	
+
+
+
+---------------------------------------------------------------
+
+query
+
+package com.dto;
+
+import java.io.Serializable;
+
+
+public class JsonData implements Serializable{
+	private String userID;
+
+	public String getUserID() {
+		return userID;
+	}
+
+	public void setUserID(String userID) {
+		this.userID = userID;
+	}
+	
+}
+
