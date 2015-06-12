@@ -19,9 +19,17 @@ $(document).ready(function() {
 	var $chat = $('#chat');
 	
 	var nickName;
+	
+	$(".send_msg").on('click', function() {
+		$('#nickError').html("");
+		console.log("hello");	
+		$(".send_msg").css("display", "none");
+		$(".join_chat").css("display", "block");
+	});
+	
 	// 채팅 시작
-	$(document).on('click', '.join_btn' , function() {		
-//	$('.join_btn').on('click', function() {
+//	$(document).on('click', '.join_btn' , function() {		
+	$('.join_btn').on('click', function() {
 		//var socket = io.connect('http://localhost:9995');
 		socket.io.reconnecting = undefined; //<- false should be the initial value
 		socket.io._reconnection = true;
