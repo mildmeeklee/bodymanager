@@ -20,7 +20,8 @@ $(document).ready(function() {
 	
 	var nickName;
 	// 채팅 시작
-	$('.join_btn').on('click', function() {
+	$(document).on('click', '.join_btn' , function() {		
+//	$('.join_btn').on('click', function() {
 		//var socket = io.connect('http://localhost:9995');
 		socket.io.reconnecting = undefined; //<- false should be the initial value
 		socket.io._reconnection = true;
@@ -106,6 +107,6 @@ $(document).ready(function() {
 	   
 	};
 	
-	
+	//$( ".chatwrap_div" ).load( "www/jsp/chatdiv.html" );
 });
 

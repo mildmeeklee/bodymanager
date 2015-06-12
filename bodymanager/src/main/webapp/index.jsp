@@ -36,7 +36,7 @@
 		<div id="users"></div>
 	</div>
 
-	
+	<!-- <div class="chatwrap_div"></div> -->
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="http://localhost:9995/socket.io/socket.io.js"></script>
 	<script src="www/js/ajaxtest.js"></script>
