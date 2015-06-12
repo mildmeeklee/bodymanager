@@ -6,11 +6,16 @@
  */
 
 var socket = io.connect('http://localhost:9995');
-
-
+	
 $(document).ready(function() {
 
+	/* $('#chat_form').on('click', function(e){
 		
+	var message = $('#chat_input').val();
+	console.log("message :: "+message);
+	socket.emit('messages', message);
+	}); */
+	
 	var $join_name = $('#join_name');
 	var $nickError = $('#nickError');
 	var $users = $('#users');
@@ -33,11 +38,11 @@ $(document).ready(function() {
 			if(data){
 				$('.join_chat').hide();
 				$('#chat_contentWrap').show();
-				$chat.append('welcome to, ' + nickName + " !!!<br>");
 			}else{
 				$nickError.html('That username is already taken!  Try again.');
 			}
 		} );
+		//$join_name.val('');
 	});
 	
 	
@@ -49,29 +54,37 @@ $(document).ready(function() {
 		$('.join_chat').hide();
 		$('#chat_contentWrap').hide();
 		$('#leave_msg').show();
-		socket.emit('user out', nickName, function(data){
+		//socket.disconnect();
+		socket.emit('user delete', nickName, function(data){
 			console.log('삭제되었습니다.')
 		});
 		socket.disconnect();
-		$chat.html('');
 		$join_name.val('');
-		
+		//socket.close();
+		/* socket.emit('disconnect', nickName, function(data){
+			console.log('callback!! ');
+			if(data){
+			
+			}else{
+				$nickError.html('채팅 종료에 실패했습니다.');
+			}
+		} ); */
+		//$join_name.val('');
 	});
 	
-	/*socket.on('usernames', function(data){
+	socket.on('usernames', function(data){
 		
 		var html = '';
 		html += data +'<br>';
-		 for(i=0; i < data.length; i++){
+		/* for(i=0; i < data.length; i++){
 			html += data[i] + '<br/>'
-		} 
+		} */
 		$users.html(html);
-	});*/
+	});
 	
 	$messageForm.submit(function(e){
 		e.preventDefault();
-		socket.emit('new message', $messageBox.val(), function(data){
-			console.log('$messageForm.submit !!');
+		socket.emit('send message', $messageBox.val(), function(data){
 			$chat.append('<span class="error">' + data + "</span><br/>");
 		});
 		$messageBox.val('');
@@ -96,16 +109,12 @@ $(document).ready(function() {
 	});
 	
 	
-	window.onbeforeunload = function () {
-		socket.emit('window beforeunload', nickName, function(data){
-			console.log('window beforeunload window beforeunload.');
-			console.log(data);
-			
-			
-		});
-	   
-	};
-	
-	
 });
 
+	
+	
+	/*var socket = io.connect('http://localhost:9995');
+	 socket.on('messages', function (data) {
+	 alert(data.hello);
+	 });*/
+	

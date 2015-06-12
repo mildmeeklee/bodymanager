@@ -26,18 +26,13 @@
 		
 			socket.emit('start manage', 'admin', function(data){				
 			} );
-			//$join_name.val('');
 		});
 		$('#send_msg').on('click', function() {
-			//var message = $('.join_name').val();
 			
-			/* console.log("send message :: " + message);
-			socket.emit('send message', message); */
 			console.log("#send_msg on click !!!   $msg :: "+ $msg.val());
 			var user = $('#select_user').find(":selected").text();
 			console.log('user :: '+user);
 			socket.emit('admin send msg', {'msg': $msg.val(), 'user' : user }, function(data){
-				//$chat.append('<b>' +  '관리자 : </b>' + data.msg + "<br/>");
 				$msg.val();
 			} ); 		
 			
@@ -48,7 +43,9 @@
 			 console.log(data);
 			var html = '';
 			html += data + '님이 입장하셨습니다. <br/>';
-			$("#select_user").append('<option value="'+data+'">'+data+'</option>');
+			//$("#select_user").append('<option value="'+data+'">'+data+'</option>');
+				$("#select_user").append('<option value="'+data+'" id="'+data+'">'+data+'</option>');
+				
 			/* for(i=0; i < data.length; i++){
 				html += data[i] + '님이 입장하셨습니다. <br/>';
 				$("#select_user").append('<option value="'+data[i]+'">'+data[i]+'</option>');
@@ -56,28 +53,41 @@
 			$users.append(html);
 		}); 
 		
-		/* $messageForm.submit(function(e){
-			e.preventDefault();
-			socket.emit('send message', $messageBox.val(), function(data){
-				$chat.append('<span class="error">' + data + "</span><br/>");
-			});
-			$messageBox.val('');
-			/* socket.emit('send message', $messageBox.val());
-			$messageBox.val(''); 
-		}); */
+		 socket.on('admin receive msg', function(data){
+			console.log('admin receive msg init!!');
+			console.log(data);			
+			$chat.append('<b>' + data.nick + ': </b>' + data.msg + "<br/>");
+		}); 
+		 
 		
 		socket.on('new message', function(data){
 			console.log('new message fire');
 			if(data.admin==true){
 				$chat.append('<b>' +  '관리자 : </b>' + data.msg + "<br/>");
-			}else{
+			}/* else{
 				$chat.append('<b>' + data.nick + ': </b>' + data.msg + "<br/>");
-			}
+			} */
 		}); 
-		/* socket.on('admin new message', function(data){
-			console.log('admin fire');
-			$chat.append('<b>' + 'admin : </b>' + data.msg + "<br/>");
-		}); */
+			
+		
+		socket.on('disconnect user', function(data){
+			console.log('disconnect user fire');
+			console.log('data');
+			console.log(data);
+			//var $selectbox = $('#select_user');		
+			//console.log($selectbox)
+			console.log(data);
+			//var $myoption = $selectbox.val(data);
+			//console.log($myoption);
+			  
+			var $myoption = $("#select_user option[value='"+data+"']");
+			$myoption.remove();
+			var html = '';
+			html += data + '님이 퇴장하셨습니다. <br/>';
+			$users.append(html);			
+		}); 
+		
+		
 		
 		
 	});
