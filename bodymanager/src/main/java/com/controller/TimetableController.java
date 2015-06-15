@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -66,9 +67,9 @@ public class TimetableController {
 		}
 	}
 	// ajax end
-	
-	@RequestMapping(value = "timetable.do")
-	public String getTimetableList(){
+	//<a  href="timetable/getTimetable/user/eylee/bd/0308">g
+	@RequestMapping("/timetable/getTimetable/user/{user}/bd/{bd}")
+	public String getTimetableList(@PathVariable String user, @PathVariable("bd") int birthday){
 		return "timetable/list";
 	}
 }

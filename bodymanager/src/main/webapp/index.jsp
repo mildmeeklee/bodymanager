@@ -36,8 +36,12 @@
 		<div id="users"></div>
 	</div>
 <div>
-
-<a  href="timetable/timetablelist.do">timetablelist</a>>
+<div>
+<a  href="timetable/timetablelist.do">timetablelist</a>
+</div>
+<div>
+<a  href="timetable/getTimetable/user/eylee/bd/0308">get</a>
+</div>
 </div>
 	<!-- <div class="chatwrap_div"></div> -->
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
