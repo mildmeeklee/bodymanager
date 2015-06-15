@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,8 +28,11 @@ public class TimetableController {
 		this.timetableDao = timetableDao;
 	}
 
-	@RequestMapping(value = "timetablelist.do", method = RequestMethod.GET)
+	static final Logger logger  = Logger.getLogger(TimetableController.class);
+	
+	@RequestMapping(value = "/timetable/timetablelist.do", method = RequestMethod.GET)
 	public ModelAndView timetableList() {
+		logger.info("Going to create timetableList Obj eylee");
 		ModelAndView mav = new ModelAndView("timetable/list");
 		return mav;
 	}
@@ -62,4 +66,9 @@ public class TimetableController {
 		}
 	}
 	// ajax end
+	
+	@RequestMapping(value = "timetable.do")
+	public String getTimetableList(){
+		return "timetable/list";
+	}
 }

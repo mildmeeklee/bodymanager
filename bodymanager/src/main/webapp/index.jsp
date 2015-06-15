@@ -35,7 +35,10 @@
 		</div>
 		<div id="users"></div>
 	</div>
+<div>
 
+<a  href="timetable/timetablelist.do">timetablelist</a>>
+</div>
 	<!-- <div class="chatwrap_div"></div> -->
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="http://localhost:9995/socket.io/socket.io.js"></script>
