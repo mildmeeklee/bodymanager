@@ -40,7 +40,8 @@
 <a  href="timetable/timetablelist.do">timetablelist</a>
 </div>
 <div>
-<a  href="timetable/getTimetable/user/eylee/bd/0308">get</a>
+
+<a  href="ws/timetable/getTimetable/user/eylee/bd/0308">get</a>
 </div>
 </div>
 	<!-- <div class="chatwrap_div"></div> -->

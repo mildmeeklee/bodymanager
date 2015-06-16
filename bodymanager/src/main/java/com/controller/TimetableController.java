@@ -67,9 +67,12 @@ public class TimetableController {
 		}
 	}
 	// ajax end
+	//http://localhost:8099/bodymanager/timetable/getTimetable/user/eylee/bd/0308
 	//<a  href="timetable/getTimetable/user/eylee/bd/0308">g
 	@RequestMapping("/timetable/getTimetable/user/{user}/bd/{bd}")
 	public String getTimetableList(@PathVariable String user, @PathVariable("bd") int birthday){
+		logger.info("birthday :: " +birthday);
+		logger.info("user :: " +user);
 		return "timetable/list";
 	}
 }
