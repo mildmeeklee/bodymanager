@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+
+/* .list_footer{
+	display: inline-block;
+	
+} */
+
+.write-btn_li {
+  position: absolute;
+  right: 200px !important;
+  
+}

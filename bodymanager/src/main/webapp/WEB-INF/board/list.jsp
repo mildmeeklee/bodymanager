@@ -4,24 +4,37 @@
 <html>
 <head>
 <title></title>
-<link rel="stylesheet" type="text/css"
-	href="/bodymanager/www/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css"	href="/bodymanager/www/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/bodymanager/www/css/main.css">
 <!-- <link rel="stylesheet" type="text/css" href="/bodymanager/www/css/bootstrap.css.map">
 	<link rel="stylesheet" type="text/css" href="/bodymanager/www/css/bootstrap-theme.css">
 	<link rel="stylesheet" type="text/css" href="/bodymanager/www/css/bootstrap.css.map"> -->
 </head>
 <body>
  <div class="dropdown">
-    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Tutorials
+    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">10
     <span class="caret"></span></button>
     <ul class="dropdown-menu">
-      <li><a href="#">HTML</a></li>
-      <li><a href="#">CSS</a></li>
-      <li><a href="#">JavaScript</a></li>
+      <li><a href="#">10</a></li>
+      <li><a href="#">25</a></li>
+      <li><a href="#">50</a></li>
+        <li><a href="#">100</a></li>
+      <li class="divider"></li>
+      <li><a href="#">About Us</a></li>
+    </ul>
+    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">제목
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="#">작성자</a></li>
+      <li><a href="#">제목</a></li>
+      <li><a href="#">본문</a></li>
+      <li><a href="#">제목 + 본문</a></li>      
       <li class="divider"></li>
       <li><a href="#">About Us</a></li>
     </ul>
   </div>
+  
+   
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -50,7 +63,6 @@
 	</table>
 	
 	
-	
 		<ul class="pagination">
 		<c:if test="${pageMap.currentPage > pageMap.blockPage }">
 			<li><a href="/bodymanager/board/boardlist.do?p=${pageMap.startPage -1}">&laquo;</a></li>
@@ -71,8 +83,13 @@
 		<c:if test="${pageMap.totalPage - pageMap.startPage >= pageMap.blockPage }">
 			<li><a href="/bodymanager/board/boardlist.do?p=${pageMap.endPage + 1}" >&raquo;</a></li>				
 		</c:if>
+		<li class="write-btn_li">
+		<button type="button" class="btn btn-info">글쓰기</button>
+		</li>
 		</ul>
-		
+		  
+		  
+		 
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="/bodymanager/www/js/bootstrap.js"></script>
 </body>
