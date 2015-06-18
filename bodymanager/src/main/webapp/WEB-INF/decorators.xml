@@ -5,7 +5,9 @@
 	<decorator name="timetable" page="/WEB-INF/timetable/main.jsp">
 		<pattern>/timetable/*</pattern>
 	</decorator>
-	
+	<decorator name="board" page="/WEB-INF/board/main_decorator.jsp">
+		<pattern>/board/*</pattern>
+	</decorator>
 	<excludes>
 	</excludes>
 

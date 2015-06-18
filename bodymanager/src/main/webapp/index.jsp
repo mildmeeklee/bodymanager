@@ -43,6 +43,9 @@
 
 <a  href="ws/timetable/getTimetable/user/eylee/bd/0308">get</a>
 </div>
+<div>
+<a  href="board/boardlist.do">boardlist</a>
+</div>
 </div>
 	<!-- <div class="chatwrap_div"></div> -->
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
