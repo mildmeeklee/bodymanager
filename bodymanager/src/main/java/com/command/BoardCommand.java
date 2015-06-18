@@ -15,7 +15,14 @@ public class BoardCommand {
 	private int re_level;
 	private int cat_id;
 	private int readcount;
+	private int rownum;
 	
+	public int getRownum() {
+		return rownum;
+	}
+	public void setRownum(int rownum) {
+		this.rownum = rownum;
+	}
 	public int getBoard_num() {
 		return board_num;
 	}

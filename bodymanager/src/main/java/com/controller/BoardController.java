@@ -1,28 +1,46 @@
 package com.controller;
 
+import java.util.HashMap;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.board.service.ListingService;
+import com.command.BoardCommand;
 import com.dao.BoardDao;
 
 @Controller
 public class BoardController {
 
-	/*@Autowired
+	@Autowired
 	BoardDao boardDao;
 
 	public void setBoardDao(BoardDao boardDao) {
 		this.boardDao = boardDao;
-	}*/
+	}
 	
 	static final Logger logger = Logger.getLogger(BoardController.class);
 	
 	@RequestMapping(value="/board/boardlist.do", method= RequestMethod.GET)
-	public String boardlist(){
+	public ModelAndView boardlist(@RequestParam(value="p", defaultValue="1") int currentPage){
 		logger.info("hi");
-		return "board/list";
+		ModelAndView mav = new ModelAndView("board/list");
+		logger.info("currentPage :: "+currentPage);
+		int blockCount = 3;	 
+		int blockPage = 3;	 
+		
+		ListingService listingService = new ListingService(boardDao, currentPage, blockCount, blockPage);
+		List<BoardCommand> list =  listingService.getBoardList();
+		HashMap<String, Integer> pageMap = listingService.getPageMap();
+		mav.addObject("list", list);
+		mav.addObject("pageMap", pageMap);
+		return mav;
+//		return "board/list";
 	}
 }
