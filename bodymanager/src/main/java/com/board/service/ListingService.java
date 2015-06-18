@@ -44,7 +44,7 @@ public class ListingService {
 	}
 	public List<BoardCommand> getBoardList(){	
 		Map<String, Integer> map = new HashMap<String, Integer>();
-		int startRow = pagingService.getStartCount();
+		int startRow = this.pagingService.getStartCount();
 		
 		int lastCount = totalCount;  
 		
@@ -53,9 +53,9 @@ public class ListingService {
 		int endRow = lastCount;
 		map.put("startRow", startRow);
 		map.put("endRow", endRow);
-		
+		logger.info("map :: "+map);
 		list = boardDao.selectList(map);
-		
+		logger.info(list);
 //		list = list.subList(pagingService.getStartCount(), lastCount);
 		return list;
 	}

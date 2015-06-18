@@ -11,15 +11,17 @@
 	<link rel="stylesheet" type="text/css" href="/bodymanager/www/css/bootstrap.css.map"> -->
 </head>
 <body>
- <ul class="dropdown-menu">
-      <li class="dropdown-header">Dropdown header 1</li>
+ <div class="dropdown">
+    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Tutorials
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
       <li><a href="#">HTML</a></li>
       <li><a href="#">CSS</a></li>
       <li><a href="#">JavaScript</a></li>
       <li class="divider"></li>
-      <li class="dropdown-header">Dropdown header 2</li>
       <li><a href="#">About Us</a></li>
     </ul>
+  </div>
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -46,17 +48,16 @@
 
 		</tbody>
 	</table>
-	<ul class="pager">
-	<c:if test="${pageMap.currentPage > pageMap.blockPage }">
-		<li><a href="/bodymanager/board/boardlist.do?p=${pageMap.startPage -1}">Previous</a></li>
-	</c:if>    
-		
+	
+	
+	
 		<ul class="pagination">
+		<c:if test="${pageMap.currentPage > pageMap.blockPage }">
+			<li><a href="/bodymanager/board/boardlist.do?p=${pageMap.startPage -1}">&laquo;</a></li>
+		</c:if>
 		<c:forEach begin="${pageMap.startPage}" end="${pageMap.endPage}" var="i">	
 			
-			<c:if test="${i > pageMap.totalPage }">
-		  		<% break; %>
-		  	</c:if>
+			<c:if test="${i <= pageMap.totalPage }">		  	
 		  	<c:choose>
 				<c:when test="${i == pageMap.currentPage }">
 				<li class="active"><a href="/bodymanager/board/boardlist.do?p=${i}">${i }</a></li>
@@ -65,12 +66,13 @@
 		  		<li><a href="/bodymanager/board/boardlist.do?p=${i}">${i }</a></li>
 		  		</c:otherwise>		
 			</c:choose>
+			</c:if>
 			</c:forEach>
-		</ul>
-			<c:if test="${pageMap.totalPage - pageMap.startPage >= pageMap.blockPage }">
-		<li><a href="/bodymanager/board/boardlist.do?p="${pageMap.endPage + 1}">Next</a></li>				
+		<c:if test="${pageMap.totalPage - pageMap.startPage >= pageMap.blockPage }">
+			<li><a href="/bodymanager/board/boardlist.do?p=${pageMap.endPage + 1}" >&raquo;</a></li>				
 		</c:if>
-	</ul>
+		</ul>
+		
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="/bodymanager/www/js/bootstrap.js"></script>
 </body>

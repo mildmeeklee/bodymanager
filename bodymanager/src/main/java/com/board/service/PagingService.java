@@ -2,6 +2,8 @@ package com.board.service;
 
 import java.util.HashMap;
 
+import org.apache.log4j.Logger;
+
 public class PagingService {
 	private int currentPage;   // 현재페이지
 	private int totalCount;	 // 전체 게시물 수
@@ -20,6 +22,16 @@ public class PagingService {
 	
 	public HashMap<String, Integer> getPageMap() {
 		return pageMap;
+	}
+	
+	static final Logger logger = Logger.getLogger(PagingService.class);
+	
+	@Override
+	public String toString() {
+		return "[ PagingService = currentPage :: "+currentPage+", totalCount :: "+totalCount
+				+", totalPage :: "+totalPage+", blockCount :: "+blockCount+", blockPage :: "+blockPage
+				+", startCount :: "+startCount+", endCount :: "+endCount+", startPage :: "+startPage
+				+", endPage :: "+endPage +" , pageMap :: "+pageMap;
 	}
 
 	// 페이징 생성자

@@ -15,6 +15,7 @@ public class BoardDao extends SqlSessionDaoSupport{
 	public List<BoardCommand> selectList(Map<String, Integer> map){
 		logger.info("selectList :: map = " + map);
 		List<BoardCommand> list = getSqlSession().selectList("board.list_all", map);
+		logger.info(list);
 		return list;
 	}	
 	
