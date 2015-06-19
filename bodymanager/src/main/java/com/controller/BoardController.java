@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.board.service.DetailService;
 import com.board.service.ListingService;
 import com.command.BoardCommand;
 import com.dao.BoardDao;
@@ -43,4 +44,23 @@ public class BoardController {
 		return mav;
 //		return "board/list";
 	}
+	
+//	detail.do?board_num
+	@RequestMapping(value="/board/detail.do", method=RequestMethod.GET)
+	public ModelAndView boarddetail(@RequestParam(value="board_num") int board_num){
+		logger.info(board_num);
+		ModelAndView mav = new ModelAndView("board/detail");
+		
+		DetailService detailService = new DetailService(boardDao, board_num);
+		BoardCommand boardCommand = detailService.getArticle();
+		mav.addObject("article", boardCommand);
+		return mav;
+	}
+	
+	@RequestMapping("board/write.do")
+	public String boardwrite(){		
+		return "board/write";
+	}
+	
+	
 }

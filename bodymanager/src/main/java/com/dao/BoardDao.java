@@ -25,5 +25,10 @@ public class BoardDao extends SqlSessionDaoSupport{
 		return count;
 	}
 	
+	public BoardCommand getArticle(int board_num){
+		BoardCommand boardCommand = getSqlSession().selectOne("board.select_detail", board_num);
+		logger.info(boardCommand);
+		return boardCommand;
+	}
 	
 }

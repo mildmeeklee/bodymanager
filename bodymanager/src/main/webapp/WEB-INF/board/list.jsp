@@ -6,6 +6,7 @@
 <title></title>
 	<link rel="stylesheet" type="text/css"	href="/bodymanager/www/css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="/bodymanager/www/css/main.css">
+	<link rel="stylesheet" type="text/css" href="/bodymanager/www/css/custom.css">
 <!-- <link rel="stylesheet" type="text/css" href="/bodymanager/www/css/bootstrap.css.map">
 	<link rel="stylesheet" type="text/css" href="/bodymanager/www/css/bootstrap-theme.css">
 	<link rel="stylesheet" type="text/css" href="/bodymanager/www/css/bootstrap.css.map"> -->
@@ -84,7 +85,7 @@
 			<li><a href="/bodymanager/board/boardlist.do?p=${pageMap.endPage + 1}" >&raquo;</a></li>				
 		</c:if>
 		<li class="write-btn_li">
-		<button type="button" class="btn btn-info">글쓰기</button>
+		<button type="button" class="btn btn-info" id="write_article">글쓰기</button>
 		</li>
 		</ul>
 		  
@@ -92,5 +93,6 @@
 		 
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="/bodymanager/www/js/bootstrap.js"></script>
+	<script src="/bodymanager/www/js/board.js"></script>
 </body>
 </html>
