@@ -1,10 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="decorator"
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
 <title></title>
-<link rel="stylesheet" type="text/css" href="/bodymanager/www/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css"	href="/bodymanager/www/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="/bodymanager/www/css/main.css">
 
 </head>
 <body>
@@ -32,5 +34,6 @@
 	</div>
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="/bodymanager/www/js/bootstrap.js"></script>
+	<script src="/bodymanager/www/js/board.js"></script>
 </body>
 </html>

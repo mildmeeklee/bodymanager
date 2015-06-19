@@ -9,7 +9,11 @@ import org.apache.log4j.Logger;
 
 import com.command.BoardCommand;
 import com.dao.BoardDao;
-
+/**
+ * 
+ * @author eylee
+ * listing service
+ */
 public class ListingService {
 
 	static final Logger logger = Logger.getLogger(ListingService.class);
@@ -19,7 +23,6 @@ public class ListingService {
 	private int blockCount;
 	private int blockPage;
 	private PagingService pagingService;
-	private HashMap<String, Integer> pageMap;
 
 	private int totalCount;
 	
@@ -33,7 +36,7 @@ public class ListingService {
 		this.currentPage = currentPage;
 		this.blockCount = blockCount;
 		this.blockPage = blockPage;
-		this.totalCount = getListCount();
+		totalCount = getListCount();
 		this.pagingService = new PagingService(currentPage, totalCount, blockCount, blockPage);
 	}
 	
@@ -44,7 +47,7 @@ public class ListingService {
 	}
 	public List<BoardCommand> getBoardList(){	
 		Map<String, Integer> map = new HashMap<String, Integer>();
-		int startRow = this.pagingService.getStartCount();
+		int startRow = pagingService.getStartCount();
 		
 		int lastCount = totalCount;  
 		

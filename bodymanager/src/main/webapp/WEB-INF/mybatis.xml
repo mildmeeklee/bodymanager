@@ -25,5 +25,5 @@
 	
 	<bean id="timetableDao" class="com.dao.TimetableDao" p:sqlSessionFactory-ref="sqlSessionFactory" />
 	<bean id="boardDao" class="com.dao.BoardDao" p:sqlSessionFactory-ref="sqlSessionFactory" />
-
+	<bean   id="commentDao"  class="com.dao.CommentDao" p:sqlSessionFactory-ref="sqlSessionFactory" />
 </beans>

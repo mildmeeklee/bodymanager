@@ -6,7 +6,7 @@ public class CommentCommand {
 
 	private int comment_num;
 	private int board_num;
-	private String comment;
+	private String c_content;
 	private String user_id;
 	private Date reg_date;
 	
@@ -22,11 +22,12 @@ public class CommentCommand {
 	public void setBoard_num(int board_num) {
 		this.board_num = board_num;
 	}
-	public String getComment() {
-		return comment;
+	
+	public String getC_content() {
+		return c_content;
 	}
-	public void setComment(String comment) {
-		this.comment = comment;
+	public void setC_content(String c_content) {
+		this.c_content = c_content;
 	}
 	public String getUser_id() {
 		return user_id;
@@ -43,7 +44,7 @@ public class CommentCommand {
 	
 	@Override
 	public String toString() {
-		return "[ CommentCommand = comment_num : "+comment_num+", board_num : "+board_num+", comment : "+comment
+		return "[ CommentCommand = comment_num : "+comment_num+", board_num : "+board_num+", c_content : "+c_content
 				+", user_id :"+user_id+", reg_date : "+reg_date+" ]";
 	}
 	

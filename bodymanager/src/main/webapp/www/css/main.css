@@ -1,12 +1,25 @@
 @CHARSET "UTF-8";
 
-/* .list_footer{
-	display: inline-block;
-	
-} */
 
-/* .write-btn_li {
-  position: absolute;
-  right: 200px !important;
-  
-} */
+
+button#write_article {
+    /*position: absolute;*/
+    float:left;
+    right: 10%;
+}
+
+.articleform{
+	width:100%;
+}
+
+.btn-g-detail{
+	margin-bottom: 25px;	
+}
+
+.btn-comments-detail{
+	  font-size: 13px;
+}
+
+.comment_box{
+	margin-left: 15px;
+}

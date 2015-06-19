@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="comment">
+	<insert id="insert_comment" parameterType="Map" >
+	insert into comments values (comment_num_seq.nextval, #{board_num}, #{c_content}, #{user_id}, sysdate)
+	</insert>
+	<select id="list_count" parameterType="int" resultType="int">
+		select count(*) from comments where board_num=#{board_num} order by reg_date desc
+	</select>
+	
+	<select id="list_all" parameterType="int" resultType="com.command.CommentCommand">
+		select * from comments where board_num=#{board_num} order by  reg_date desc
+	</select>
+</mapper>

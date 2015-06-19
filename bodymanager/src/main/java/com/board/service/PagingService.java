@@ -72,6 +72,7 @@ public class PagingService {
 		pageMap.put("startPage", startPage);
 		pageMap.put("endPage", endPage);
 		pageMap.put("blockPage", blockPage);
+		pageMap.put("totalCount", totalCount);
 	
 		// 이전 block 페이지
 		pagingHtml = new StringBuffer();
