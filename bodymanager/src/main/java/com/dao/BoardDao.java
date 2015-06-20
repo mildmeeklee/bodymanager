@@ -25,10 +25,54 @@ public class BoardDao extends SqlSessionDaoSupport{
 		return count;
 	}
 	
+//	update_readcount
+	public int updateReadcount(int  board_num){
+		logger.info("board_num :: "+board_num);
+		int count = getSqlSession().update("board.update_readcount", board_num);
+		logger.info("updateReadcount :: count = "+count);	
+		return count;
+	}
+	
 	public BoardCommand getArticle(int board_num){
 		BoardCommand boardCommand = getSqlSession().selectOne("board.select_detail", board_num);
 		logger.info(boardCommand);
 		return boardCommand;
 	}
+
+	public int getMaxBoardnum(){
+		int board_num = getSqlSession().selectOne("board.select_board_num");
+		logger.info("board_num :: "+board_num);
+		return board_num;
+	}
+	
+	public int updateArticle_group(Map<String, Integer> groupMap){
+//		udpate_article_group
+		logger.info("groupMap :: "+groupMap);
+		int count = getSqlSession().update("board.udpate_article_group", groupMap);
+		logger.info("updateArticle_group :: count = "+count);
+		return count;
+	}
+	
+	public int addArticle(BoardCommand boardCommand) {
+		logger.info(boardCommand);
+		int count = getSqlSession().insert("board.add_article", boardCommand);
+		logger.info("addArticle :: count = "+count);		
+		return count;
+	}
+
+	//update article 
+	public int updateArticle(Map<String, Integer> map) {
+		logger.info("map :: "+map);
+		int count = getSqlSession().update("board.update_article", map);
+		return 0;
+	}
+
+	public int updateArticle(BoardCommand boardCommand) {
+		logger.info("boardCommand :: "+boardCommand);
+		int count = getSqlSession().update("board.update_article", boardCommand);
+		return count;
+	}
+
+	
 	
 }

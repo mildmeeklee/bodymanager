@@ -1,6 +1,9 @@
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<c:set var="context" value="${pageContext.request.contextPath}" />
+<input type="hidden" id="context" value="${context}">
 <div class="panel panel-default">
 	<div class="panel-heading">제목: ${article.subject }
 		조회:${article.readcount }</div>
@@ -18,9 +21,9 @@
 		</a>
 	</div>
 	<div class="col-md-3 btn-g-detail">
-		<button type="button" class="btn btn-info">글목록</button>
+		<button type="button" class="btn btn-info" onclick="javascript:gotoList(${cpageMap.currentPage })">글목록</button>
 		<button type="button" class="btn btn-success" id="write_reply">답글쓰기</button>
-		<button type="button" class="btn btn-warning">수정</button>
+		<button type="button" class="btn btn-warning" onclick="javascript:gotoUpdateForm(${article.board_num }, ${cpageMap.currentPage })">수정</button>
 		<button type="button" class="btn btn-danger">삭제</button>
 	</div>
 </div>
@@ -33,8 +36,11 @@
 <div class="panel panel-info">
     <div class="panel-heading">댓글 쓰기</div>
     <div class="panel-body">
-      <form class="form-inline" role="form" method="post" action="/bodymanager/board/writecomment.do"> 
-      		<input type="hidden" name="board_num" value="${article.board_num }">
+      <form class="form-inline" role="form" method="post" action="/bodymanager/board/writecomment.do">
+      		<input type="hidden" name="board_num" value="${article.board_num }" id="board_num">
+      		<input type="hidden" name="ref_g" value="${article.ref_g }" id="ref_g">
+      		<input type="hidden" name="re_step" value="${article.re_step }" id="re_step">
+      		<input type="hidden" name="re_level" value="${article.re_level }" id="re_level">
 		   <div class="form-group">
 					<label for="comments"></label>
 					<textarea class="form-control" rows="5" name="comment"  placeholder="댓글을 달아주세요" cols="155"></textarea>
@@ -65,7 +71,7 @@
 		     
     		</div>
     		<div class="col-md-6">
-       		 <a href="#">
+       		 <a href="#">       		 	
          		 <span class="glyphicon glyphicon-pencil">수정</span>
        		 </a>
     		<a href="#">

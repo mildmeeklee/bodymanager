@@ -43,7 +43,7 @@
 				<tr>
 					<td><c:out value="${status.count }" /></td>
 					<td><a
-						href="detail.do?board_num=<c:out value="${result.board_num }"/>"><c:out
+						href="detail.do?board_num=<c:out value="${result.board_num }"/>&p=<c:out value="${pageMap.currentPage}" />"><c:out
 								value="${result.subject }" /></a></td>
 					<td><c:out value="${result.user_id }" /></td>
 					<td><c:out value="${result.reg_date }" /></td>
@@ -81,9 +81,7 @@
 		<c:if test="${pageMap.totalPage - pageMap.startPage >= pageMap.blockPage }">
 			<li><a href="/bodymanager/board/boardlist.do?p=${pageMap.endPage + 1}" >&raquo;</a></li>				
 		</c:if>
-		<!-- <li class="write-btn_li">
-		<button type="button" class="btn btn-info" id="write_article">글쓰기</button>
-		</li>-->
+		
 		</ul> 
 		  
 		</div>

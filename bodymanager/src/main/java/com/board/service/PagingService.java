@@ -67,12 +67,18 @@ public class PagingService {
 			endPage = totalPage;
 		}
 
-		pageMap.put("totalPage", totalPage);
-		pageMap.put("currentPage", currentPage);
-		pageMap.put("startPage", startPage);
-		pageMap.put("endPage", endPage);
-		pageMap.put("blockPage", blockPage);
-		pageMap.put("totalCount", totalCount);
+//		pageMap.put("totalPage", totalPage);
+//		pageMap.put("currentPage", currentPage);
+//		pageMap.put("startPage", startPage);
+//		pageMap.put("endPage", endPage);
+//		pageMap.put("blockPage", blockPage);
+//		pageMap.put("totalCount", totalCount);
+		pageMap.put("totalPage", getTotalCount());
+		pageMap.put("currentPage", getCurrentPage());
+		pageMap.put("startPage", getStartPage());
+		pageMap.put("endPage", getEndPage());
+		pageMap.put("blockPage", getBlockPage());
+		pageMap.put("totalCount", getTotalCount());
 	
 		// 이전 block 페이지
 		pagingHtml = new StringBuffer();
@@ -118,6 +124,7 @@ public class PagingService {
 	}
 
 	public int getCurrentPage() {
+		logger.info(currentPage);
 		return currentPage;
 	}
 
