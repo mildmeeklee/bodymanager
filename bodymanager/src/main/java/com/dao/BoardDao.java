@@ -73,6 +73,18 @@ public class BoardDao extends SqlSessionDaoSupport{
 		return count;
 	}
 
+	public int deleteArticle(int board_num) {
+		logger.info("deleteArticle :: board_num :: "+board_num);
+		int count = getSqlSession().delete("board.delete_article", board_num);
+		return count;
+	}
+
+	public List<BoardCommand> getLatestList() {
+		List<BoardCommand> list = getSqlSession().selectList("board.select_best5");
+		logger.info(list);
+		return null;
+	}
+
 	
 	
 }

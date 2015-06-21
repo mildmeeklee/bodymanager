@@ -59,7 +59,7 @@
 		</div>
 		<div class="col-md-9 text-right">
 		<button type="submit" class="btn btn-info" id="article_update">확인</button>
-		<button type="button" class="btn btn-warning">취소</button>		
+		<button type="button" class="btn btn-warning" onclick="goBack()">취소</button>		
 		</div>
 	</div>
 	

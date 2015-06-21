@@ -31,6 +31,8 @@ $(function(){
 		var url = "/bodymanager/board/write.do";
 		window.location = url;	
 	});*/	
+	
+
 
 });
 
@@ -67,3 +69,49 @@ function gotoList(currentPage){
 	}
 	window.location = url;
 }
+
+// cancel
+function goBack(){
+	console.log("cancel clicked!!");
+	history.go(-1);
+	
+}
+
+// delete Article
+function deleteArticle(board_num ,currentPage){
+	console.log("deleteArticle clicked!!");
+	var contextPath = $("#context").val();
+	var url = contextPath+'/board/deletearticle.do?p='+currentPage+"&board_num="+board_num;
+	console.log(url);
+	// modal start
+	
+	bootbox.confirm({
+	    buttons: {
+	        confirm: {
+	            label: '확인',
+	            className: 'btn-danger'
+	        },
+	        cancel: {
+	            label: '취소',
+	            className: 'btn-default'
+	        }
+	    },
+	    message: '삭제하시겠습니까?',
+	    callback: function(result) {
+	    	if (result) {
+		        console.log("User confirmed dialog");
+		        window.location = url;
+		        alert("삭제되었습니다."+result);
+		    } else {
+		        console.log("User declined dialog");
+		        alert("취소되었습니다."+result);
+		    }
+	    },
+	    title: "안내",
+	});
+	
+	
+}
+
+ 
+

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%-- <c:redirect url="welcome.do"/> --%>
+<c:redirect url="welcome.do"/>
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="www/css/chat.css">
@@ -48,22 +48,11 @@
 <div>
 <a  href="board/boardlist.do">boardlist</a>
 </div>
-	<c:if test="${not empty boardlist}">
- 
-		<ul>
-			<c:forEach var="listValue" items="${boardlist}">
-				<li>${boardlist.board_num}</li>
-			</c:forEach>
-		</ul>
- 
-	</c:if>
-
 </div>
 	<!-- <div class="chatwrap_div"></div> -->
 	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script src="http://localhost:9995/socket.io/socket.io.js"></script>
 	<script src="www/js/ajaxtest.js"></script>
 	<script src="www/js/chatClient.js"></script>
-	<script src="www/js/intro.js"></script>
 </body>
 </html>

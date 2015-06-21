@@ -42,9 +42,20 @@
 			<c:forEach var="result" items="${list }" varStatus="status">
 				<tr>
 					<td><c:out value="${status.count }" /></td>
-					<td><a
+					<td>
+						
+					<c:if test="${result.re_level > 0 }">
+						<img alt="" src="/bodymanager/www/images/level.gif" width="${10 * result.re_level}" >
+						  <span class="glyphicon glyphicon-hand-right"></span>   
+					</c:if>
+					
+					<a
 						href="detail.do?board_num=<c:out value="${result.board_num }"/>&p=<c:out value="${pageMap.currentPage}" />"><c:out
-								value="${result.subject }" /></a></td>
+								value="${result.subject }" /></a>
+					<c:if test="${result.readcount > 50 }">
+					<span class="glyphicon glyphicon-heart"></span> best
+					</c:if>			
+					</td>
 					<td><c:out value="${result.user_id }" /></td>
 					<td><c:out value="${result.reg_date }" /></td>
 					<td><c:out value="${result.readcount }" />

@@ -24,7 +24,7 @@
 		<button type="button" class="btn btn-info" onclick="javascript:gotoList(${cpageMap.currentPage })">글목록</button>
 		<button type="button" class="btn btn-success" id="write_reply">답글쓰기</button>
 		<button type="button" class="btn btn-warning" onclick="javascript:gotoUpdateForm(${article.board_num }, ${cpageMap.currentPage })">수정</button>
-		<button type="button" class="btn btn-danger">삭제</button>
+		<button type="button" class="btn btn-danger" onclick="deleteArticle(${article.board_num }, ${cpageMap.currentPage })">삭제</button>
 	</div>
 </div>
 <!-- <div class=""
@@ -126,3 +126,4 @@
   
 </div>
 </c:if>
+

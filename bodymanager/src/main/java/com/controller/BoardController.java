@@ -49,6 +49,8 @@ public class BoardController {
 
 	static final Logger logger = Logger.getLogger(BoardController.class);
 	
+	
+	
 	@RequestMapping(value="/boardlist.do", method= RequestMethod.GET)
 	public ModelAndView getBoardList(@RequestParam(value="p", defaultValue="1") int currentPage){
 		
@@ -153,4 +155,19 @@ public class BoardController {
 	}
 	
 	// update end
+	
+	// delete article start
+	@RequestMapping(value="/deletearticle.do", method=RequestMethod.GET)
+	public String deleteArticle(@RequestParam(value="board_num", defaultValue="0") int board_num,
+			@RequestParam(value="p", defaultValue="1") int currentPage){
+		logger.info("board_num :: "+board_num+", currentPage :: "+currentPage);
+		BoardService boardService = new BoardService(boardDao, board_num);
+		int count = boardService.deleteArticle();
+		logger.info("count :: "+count);
+		return "redirect:/board/boardlist.do?p="+currentPage;
+	}
+	
+	// delete article end
+	
+	
 }

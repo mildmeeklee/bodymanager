@@ -1,6 +1,7 @@
 package com.board.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -28,7 +29,7 @@ public class BoardService implements BoardInterface{
 		this.writeMap = writeMap;
 	}
 	
-	// construction for  goto detail   // construction for update 
+	// construction for  goto detail   // construction for update // construction for  delete article
 	public BoardService(BoardDao boardDao, int board_num) {
 		this.boardDao = boardDao;
 		this.board_num = board_num;
@@ -39,6 +40,11 @@ public class BoardService implements BoardInterface{
 	public BoardService(BoardDao boardDao, BoardCommand boardCommand) {
 		this.boardDao = boardDao;
 		this.boardCommand = boardCommand;
+	}
+
+	// construction for index.jsp / welcome
+	public BoardService(BoardDao boardDao) {
+		this.boardDao = boardDao;
 	}
 
 	// insert
@@ -121,6 +127,23 @@ public class BoardService implements BoardInterface{
 	}
 	
 	// update end
+
+	// delete article start
 	
+	public int deleteArticle(){
+		int count = boardDao.deleteArticle(board_num); 
+		logger.info("count :: "+count);
+		return count;
+	}
+	// delete article end
+	
+	//select list5 start
+	public List<BoardCommand> getLatestList(){
+		List<BoardCommand> list= boardDao.getLatestList();
+		logger.info(list);
+		return list;
+	}
+	
+	//select list5 end
 	
 }

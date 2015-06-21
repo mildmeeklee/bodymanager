@@ -22,6 +22,9 @@ update board set readcount = readcount+1 where board_num=#{board_num}
 update board set  subject=#{subject}, content=#{content},cat_id=#{cat_id}, reg_date=sysdate
 					where board_num=#{board_num}
 </update>
+<delete id="delete_article" parameterType="int">
+delete from board where board_num=#{board_num}
+</delete>
 
  <select id="list_all" parameterType="Map" resultType="com.command.BoardCommand" >
  	select BOARD_NUM, SUBJECT, CONTENT, USER_ID, REG_DATE, REF_G, RE_STEP, RE_LEVEL, CAT_ID, READCOUNT , r from 
@@ -43,5 +46,10 @@ update board set  subject=#{subject}, content=#{content},cat_id=#{cat_id}, reg_d
 	select nvl(max(board_num), 0) from  board
 	<!-- NVL(count(*), 0)  -->
 </select>
+
+<!-- best 5 select   -->
+	<select id="select_best5" resultType="com.command.BoardCommand">
+		select * from board where ROWNUM &lt; 6 ORDER BY reg_date desc 
+	</select>
 </mapper>
    
